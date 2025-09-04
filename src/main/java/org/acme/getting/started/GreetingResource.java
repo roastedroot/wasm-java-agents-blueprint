@@ -32,7 +32,6 @@ public class GreetingResource {
             @PathParam("lang") String lang,
             @PathParam("name") String name,
             String body) {
-        var before = System.currentTimeMillis();
         String greeting =
                 switch (pl) {
                     case "js" -> jsService.greeting(name, lang);
@@ -42,15 +41,8 @@ public class GreetingResource {
                     default -> throw new UnsupportedOperationException(
                             "Language %s is not supported".formatted(pl));
                 };
-
-        var after = System.currentTimeMillis();
-        Log.error("Lang exec: " + (after - before));
-
-        before = System.currentTimeMillis();
         var result = chatService.greetWithLLM(name, lang, greeting, body);
-        after = System.currentTimeMillis();
 
-        Log.error("Model exec: " + (after - before));
         return result;
     }
 }
