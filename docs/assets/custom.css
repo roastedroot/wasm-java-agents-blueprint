@@ -1,0 +1,169 @@
+/* Custom styles for WASM Java Agents Blueprint documentation */
+
+:root {
+  --primary-color: #ff6b35;
+  --secondary-color: #004e89;
+  --accent-color: #1a659e;
+  --text-color: #2c3e50;
+  --background-color: #ffffff;
+  --code-background: #f8f9fa;
+  --border-color: #e9ecef;
+}
+
+/* Header styling */
+.md-header {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+.md-header__title {
+  color: white;
+  font-weight: 600;
+}
+
+/* Navigation styling */
+.md-nav__title {
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+
+.md-nav__link--active {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Code blocks */
+.highlight {
+  background-color: var(--code-background);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+/* Inline code */
+code {
+  background-color: var(--code-background);
+  color: var(--primary-color);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+/* Tables */
+.md-typeset table:not([class]) {
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--secondary-color);
+  color: white;
+  font-weight: 600;
+}
+
+.md-typeset table:not([class]) td {
+  border-top: 1px solid var(--border-color);
+}
+
+/* Buttons and links */
+.md-button {
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.2s ease;
+}
+
+.md-button:hover {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+/* Admonitions */
+.md-typeset .admonition {
+  border-left: 4px solid var(--primary-color);
+  background-color: #fff8f5;
+}
+
+.md-typeset .admonition-title {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
+}
+
+/* Mermaid diagrams */
+.mermaid {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+/* Custom badges */
+.badge {
+  display: inline-block;
+  padding: 0.25em 0.6em;
+  font-size: 0.75em;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  margin: 0.2em;
+}
+
+.badge-java {
+  background-color: #f89820;
+  color: white;
+}
+
+.badge-quarkus {
+  background-color: #4695eb;
+  color: white;
+}
+
+.badge-wasm {
+  background-color: #654ff0;
+  color: white;
+}
+
+/* Feature cards */
+.feature-card {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  background-color: var(--background-color);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.feature-card h3 {
+  color: var(--secondary-color);
+  margin-top: 0;
+}
+
+/* Agent examples */
+.agent-example {
+  background-color: #f8f9fa;
+  border-left: 4px solid var(--primary-color);
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.agent-example h4 {
+  color: var(--secondary-color);
+  margin-top: 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .md-content {
+    padding: 1rem;
+  }
+  
+  .feature-card {
+    margin: 0.5rem 0;
+    padding: 1rem;
+  }
+}
