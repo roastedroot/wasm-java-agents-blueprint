@@ -24,10 +24,22 @@ The application uses LangChain4j for LLM integration, which supports a wide vari
 - **Cloud Models**: OpenAI, Anthropic, Azure OpenAI
 - **Custom Models**: Any LangChain4j-compatible provider
 
+### Recommended Model: TinyLlama-1.1B-Chat-v1.0
+
+**TinyLlama-1.1B-Chat-v1.0** works well for demo purposes and can run efficiently on development machines.
+
+### JLama Integration Benefits
+
+**JLama** (Java implementation of LLaMA) provides optimized inference and memory management specifically designed for the JVM environment. Both JLama and Chicory run entirely within the JVM boundaries, ensuring everything is self-contained within the Java ecosystem.
+
 Experiment with different models to find what works best for your use case:
 
 ```properties
-# For local models
+# For TinyLlama with JLama (recommended)
+quarkus.langchain4j.jlama.chat-model.model-id=TinyLlama-1.1B-Chat-v1.0
+quarkus.langchain4j.jlama.chat-model.base-url=http://localhost:11434
+
+# For other local models
 quarkus.langchain4j.jlama.chat-model.model-id=qwen3:8b
 quarkus.langchain4j.jlama.chat-model.base-url=http://localhost:11434
 

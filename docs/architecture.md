@@ -48,6 +48,8 @@ graph TB
 - **LangChain4j**: Java AI framework for LLM integration
 - **Model abstraction**: Supports local and cloud-based models
 - **Context management**: Handles conversation context and prompts
+- **JLama**: Optimized Java implementation of LLaMA for local inference
+- **TinyLlama-1.1B-Chat-v1.0**: Lightweight model for efficient local processing
 
 ## Agent Implementations
 
@@ -187,6 +189,11 @@ public class JsGreetingService {
 - **Optimized Runtime**: JIT compilation and garbage collection
 - **Memory Management**: Automatic memory allocation and cleanup
 - **Enterprise Features**: Monitoring, profiling, and debugging tools
+
+### AI Framework Performance
+- **LangChain4j Efficiency**: The framework demonstrates excellent performance with minimal overhead, providing type-safe AI integration without sacrificing speed
+- **TinyLlama-1.1B-Chat-v1.0**: Works well for demo purposes and can run efficiently on development machines
+- **JLama Optimization**: The Java-native LLaMA implementation provides optimized inference specifically tuned for JVM characteristics. Both JLama and Chicory run entirely within the JVM boundaries, ensuring everything is self-contained within the Java ecosystem
 
 ## Scalability Considerations
 
