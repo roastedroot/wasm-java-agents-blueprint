@@ -3,11 +3,11 @@ requires = ["setuptools>=61", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "wasm-agents-blueprint"
+name = "wasm-java-agents-blueprint"
 version = "0.1.0"
 readme = "README.md"
 license = "Apache-2.0"
-description = "Running AI agents in a browser with Pyodide"
+description = "Running AI agents in the JVM"
 dependencies = []
 
 [project.optional-dependencies]
@@ -22,9 +22,9 @@ dev = [
 ]
 
 [project.urls]
-Documentation = "https://mozilla-ai.github.io/wasm-agents-blueprint/"
-Issues = "https://github.com/mozilla-ai/wasm-agents-blueprint/issues"
-Source = "https://github.com/mozilla-ai/wasm-agents-blueprint"
+Documentation = "https://github.com/roastedroot/wasm-java-agents-blueprint"
+Issues = "https://github.com/roastedroot/wasm-java-agents-blueprint/issues"
+Source = "https://github.com/roastedroot/wasm-java-agents-blueprint"
 
 [tool.setuptools]
 # Tell setuptools this is not a Python package, just a project with dependencies

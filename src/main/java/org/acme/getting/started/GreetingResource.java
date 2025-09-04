@@ -1,5 +1,6 @@
 package org.acme.getting.started;
 
+import io.quarkus.logging.Log;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.PUT;
@@ -31,6 +32,7 @@ public class GreetingResource {
             @PathParam("lang") String lang,
             @PathParam("name") String name,
             String body) {
+        var before = System.currentTimeMillis();
         String greeting =
                 switch (pl) {
                     case "js" -> jsService.greeting(name, lang);
@@ -41,6 +43,14 @@ public class GreetingResource {
                             "Language %s is not supported".formatted(pl));
                 };
 
-        return chatService.greetWithLLM(name, lang, greeting, body);
+        var after = System.currentTimeMillis();
+        Log.error("Lang exec: " + (after - before));
+
+        before = System.currentTimeMillis();
+        var result = chatService.greetWithLLM(name, lang, greeting, body);
+        after = System.currentTimeMillis();
+
+        Log.error("Model exec: " + (after - before));
+        return result;
     }
 }

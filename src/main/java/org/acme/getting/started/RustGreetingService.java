@@ -27,7 +27,7 @@ public class RustGreetingService {
 
         var namePtr = writeCString(instance, name);
         var langPtr = writeCString(instance, lang);
-        var resultPtr = (int) greetFn.apply(namePtr, langPtr)[0];
+        var resultPtr = (int) greetFn.apply(langPtr, namePtr)[0];
 
         var result = instance.memory().readCString(resultPtr);
         Log.info("Rust agent greeting: " + result);

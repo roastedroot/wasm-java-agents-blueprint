@@ -25,10 +25,10 @@
 # WASM Java Agents Blueprint
 
 Inspired by [wasm-agents-blueprint](https://github.com/mozilla-ai/wasm-agents-blueprint) and [wasm-browser-agents-blueprint](https://github.com/hwclass/wasm-browser-agents-blueprint) experimenting with WebAssembly agents, we wanted to explore running these powerful AI systems within an alternative, and extremely popular runtime: the Java Virtual Machine (JVM).
-The JVM is one of the most widely used systems in the world, powering everything from enterprise applications to mobile development, making it an ideal platform for deploying AI agents at scale.
 
-This blueprint demonstrates how to build AI agents using WebAssembly modules within a Java application, leveraging the JVM's robust ecosystem and enterprise-grade capabilities.
-You can run agents written in multiple languages (Rust, Go, Python, JavaScript) seamlessly without leaving the JVM, combining the performance benefits of WebAssembly with the reliability and maturity of the Java platform.
+The JVM is one of the most widely used systems in the world, powering everything from enterprise applications to mobile development. Its platform independence enables applications to run seamlessly across diverse operating systems without modification, while its robust memory management with automatic garbage collection simplifies development and reduces memory leaks. The JVM's security model enforces strict policies including bytecode verification and sandboxing, and it supports multiple programming languages beyond Java, fostering a versatile and expansive ecosystem. These attributes make it an ideal platform for deploying AI agents at scale.
+
+This blueprint demonstrates how to build AI agents using WebAssembly modules within a Java application, leveraging the JVM's robust ecosystem and enterprise-grade capabilities. You can run agents written in multiple languages (Rust, Go, Python, JavaScript) seamlessly within the JVM, combining the performance benefits of WebAssembly with the reliability and maturity of the Java platform.
 
 ## Quick Start
 
@@ -56,7 +56,7 @@ You can run agents written in multiple languages (Rust, Go, Python, JavaScript) 
         -H "Content-Type: text/plain" \
         --data "Tell me about yourself"
 
-   # Test Go agent  
+   # Test Go agent
    curl -X PUT "http://localhost:8080/hello/go/fr/Bob" \
         -H "Content-Type: text/plain" \
         --data "What can you do?"
@@ -123,16 +123,16 @@ wasm-java-agents-blueprint/
 ## Available Agents
 
 ### Rust Agent (`/hello/rust/{lang}/{name}`)
-Compiling Rust to WebAssembly is just a blissfull experience.
+Compiling Rust to WebAssembly is a blissful experience.
 
 ### Go Agent (`/hello/go/{lang}/{name}`)
-Compiled to Wasm thanks to [TinyGo](https://tinygo.org/).
+Compiled to WebAssembly thanks to [TinyGo](https://tinygo.org/).
 
 ### Python Agent (`/hello/py/{lang}/{name}`)
 Leveraging [Extism SDK](https://github.com/extism/chicory-sdk) and the [Python PDK](https://github.com/extism/python-pdk) (which uses [PyO3](https://github.com/PyO3/pyo3))
 
 ### JavaScript Agent (`/hello/js/{lang}/{name}`)
-JavaScript is compiled and executed on the fly thanks to [QuickJs](https://github.com/roastedroot/quickjs4j).
+JavaScript is compiled and executed on the fly thanks to [QuickJS4j](https://github.com/roastedroot/quickjs4j).
 
 ## Building WASM Modules
 
@@ -140,11 +140,11 @@ The project includes the scripts used to build WASM modules from source:
 
 ```bash
 ./scripts/build-rust.sh
-./scripts/build-go.sh  
+./scripts/build-go.sh
 ./scripts/build-python.sh
 ```
 
-There are also scripts to download toolchains and dependencies, you might need to tweak those to match your os/architecture.
+There are also scripts to download toolchains and dependencies. You might need to tweak those to match your OS/architecture.
 
 ## Features
 
@@ -153,6 +153,14 @@ There are also scripts to download toolchains and dependencies, you might need t
 - **WebAssembly Integration**: Seamless WASM module execution within the JVM
 - **LLM Integration**: Built-in support for local and cloud language models
 - **RESTful API**: Simple HTTP interface for agent interaction
+
+## Documentation
+
+For detailed guides and advanced usage, check out our comprehensive documentation:
+
+- **[Getting Started](docs/getting-started.md)**: Quick setup and first steps
+- **[Architecture Overview](docs/architecture.md)**: System design and component interactions
+- **[Customization Guide](docs/customization.md)**: Tailor the blueprint to your needs
 
 ## License
 
