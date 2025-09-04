@@ -6,22 +6,22 @@ import io.roastedroot.quickjs4j.annotations.Invokables;
 import io.roastedroot.quickjs4j.core.Engine;
 import io.roastedroot.quickjs4j.core.Runner;
 import jakarta.enterprise.context.ApplicationScoped;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 @ApplicationScoped
 public class JsGreetingService {
-    private static final Logger LOG = LoggerFactory.getLogger(JsGreetingService.class);
 
     private static final String jsAgent;
 
     static {
         try {
-            jsAgent = new String(
-                    JsGreetingService.class.getResourceAsStream("/demos/js/greet.js").readAllBytes(), StandardCharsets.UTF_8);
+            jsAgent =
+                    new String(
+                            JsGreetingService.class
+                                    .getResourceAsStream("/demos/js/greet.js")
+                                    .readAllBytes(),
+                            StandardCharsets.UTF_8);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -42,15 +42,14 @@ public class JsGreetingService {
             String result = jsApi.greet(name, lang);
 
             if (!runner.stdout().isEmpty()) {
-                LOG.info("js stdout: {}", runner.stdout());
+                Log.infof("js stdout: {}", runner.stdout());
             }
             if (!runner.stderr().isEmpty()) {
-                LOG.info("js stderr: {}", runner.stderr());
+                Log.infof("js stderr: {}", runner.stderr());
             }
 
             Log.info("Js agent greeting: " + result);
             return result;
         }
     }
-
 }
