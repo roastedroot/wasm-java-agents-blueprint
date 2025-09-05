@@ -1,5 +1,8 @@
 # Polyglot AI Agents: WebAssembly Meets the JVM
 
+authors:
+#### Mario Fusco / Andrea Peruffo
+
 *Following up on [Baris Guler's excellent exploration](https://blog.mozilla.ai/3w-for-in-browser-ai-webllm-wasm-webworkers/) of browser-native AI agents using WebLLM + WASM + WebWorkers, we're excited to present a complementary approach that leverages the Java Virtual Machine's unique polyglot capabilities and enterprise-grade infrastructure.*
 
 ## Introduction
@@ -86,7 +89,7 @@ flowchart TD
 Each language brings its strengths to the AI agent ecosystem:
 
 - **Rust**: High-performance systems programming with memory safety, compiled to WebAssembly for maximum efficiency
-- **Go**: Efficient concurrent operations and clean syntax, leveraging TinyGo for WASM compilation with WASI support
+- **Go**: Efficient and with clean syntax, leveraging TinyGo for WASM compilation with WASI support
 - **Python**: Flexible scripting via PyO3 compilation to WASM, maintaining Python's expressiveness
 - **JavaScript**: Dynamic scripting with QuickJS integration, enabling runtime flexibility
 
@@ -198,6 +201,28 @@ The JVM's polyglot capabilities, combined with WebAssembly and modern AI framewo
 The future of AI agent deployment isn't about choosing between browser and server approaches—it's about having the right tool for the right job. The JVM approach complements the browser-based 3W stack by providing enterprise-grade infrastructure and polyglot capabilities that enable new categories of AI applications.
 
 As we continue to explore the boundaries of what's possible with AI agents, the JVM's mature ecosystem and polyglot capabilities provide a solid foundation for building the next generation of enterprise AI applications.
+
+---
+
+## Links and Resources
+
+This blueprint is built on top of several excellent open-source projects. Here are the key technologies and resources:
+
+### Technologies
+- **[Quarkus](https://quarkus.io/)** - Modern, cloud-native Java framework with fast startup times
+- **[LangChain4j](https://github.com/langchain4j/langchain4j)** - Java AI framework for LLM integration
+- **[JLama](https://github.com/jlama-ai/jlama)** - Java implementation of LLaMA for local inference
+- **[Chicory](https://github.com/dylibso/chicory)** - Pure Java WebAssembly runtime
+- **[Extism Chicory SDK](https://github.com/extism/chicory-sdk)** - Extism SDK for Chicory WebAssembly runtime
+- **[Extism Python PDK](https://github.com/extism/python-pdk)** - Python Plugin Development Kit for Extism
+- **[QuickJS4j](https://github.com/roastedroot/quickjs4j)** - JavaScript execution within the JVM
+- **[TinyGo](https://tinygo.org/)** - Go compiler for WebAssembly
+- **[PyO3](https://github.com/PyO3/pyo3)** - Rust bindings for Python
+
+### Related Projects
+- **[wasm-agents-blueprint](https://github.com/mozilla-ai/wasm-agents-blueprint)** - Original browser-based WASM agents blueprint
+- **[wasm-browser-agents-blueprint](https://github.com/hwclass/wasm-browser-agents-blueprint)** - Browser-native AI agents with WebLLM + WASM + WebWorkers
+- **[Mozilla.ai Blueprints Hub](https://developer-hub.mozilla.ai/)** - Collection of AI agent blueprints and examples
 
 ---
 
