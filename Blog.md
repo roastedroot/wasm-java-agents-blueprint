@@ -3,7 +3,11 @@
 authors:
 #### Mario Fusco / Andrea Peruffo
 
+----
+
 *Following up on [Baris Guler's excellent exploration](https://blog.mozilla.ai/3w-for-in-browser-ai-webllm-wasm-webworkers/) of browser-native AI agents using WebLLM + WASM + WebWorkers, we're excited to present a complementary approach that leverages the Java Virtual Machine's unique polyglot capabilities and enterprise-grade infrastructure.*
+
+----
 
 ## Introduction
 
