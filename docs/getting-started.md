@@ -2,7 +2,7 @@
 
 This Blueprint leverages [Chicory](https://github.com/dylibso/chicory) to run WebAssembly modules directly within the Java Virtual Machine, enabling you to use multi-language AI agents without the need for external runtime dependencies.
 
-## Why LangChain4j Works So Well
+## LangChain4j
 
 LangChain4j has proven to be exceptionally effective for Java-based AI applications, providing seamless integration with both local and cloud-based language models. The framework's modular architecture makes it easy to switch between different model providers, while its type-safe API ensures reliable communication with AI services. 
 
