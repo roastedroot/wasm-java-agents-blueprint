@@ -49,28 +49,6 @@ graph TB
     LLM --> Model[LLM Model<br/>Local or Cloud]
 ```
 
-## Request Flow: From Client to AI Response
-
-Here's how a typical request flows through our polyglot AI system:
-
-```mermaid
-sequenceDiagram
-    participant Client
-    participant Quarkus as Quarkus REST API
-    participant Agent as Polyglot Agent<br/>(Rust/Go/Python/JS)
-    participant LLM as LangChain4j + LLM
-    participant WASM as WASM Runtime<br/>(Chicory/Extism/QuickJS)
-
-    Client->>Quarkus: PUT /hello/rust/en/Alice<br/>"Tell me about yourself"
-    Quarkus->>Agent: Select Rust agent based on path
-    Agent->>WASM: Load Rust WASM module
-    WASM-->>Agent: Return greeting: "Hello Alice!"
-    Agent-->>Quarkus: Return greeting
-    Quarkus->>LLM: Send context: "The greeting Hello Alice! was generated in English for Alice. Tell me about yourself"
-    LLM-->>Quarkus: AI response: "Hello Alice! I'm an AI agent..."
-    Quarkus-->>Client: Return AI response
-```
-
 ## Polyglot Agent Execution Flow
 
 The following diagram shows how different language agents are executed within the JVM:
@@ -108,37 +86,12 @@ flowchart TD
 Each language brings its strengths to the AI agent ecosystem:
 
 - **Rust**: High-performance systems programming with memory safety, compiled to WebAssembly for maximum efficiency
-- **Go**: Efficient concurrent operations and clean syntax, leveraging TinyGo for WASM compilation
+- **Go**: Efficient concurrent operations and clean syntax, leveraging TinyGo for WASM compilation with WASI support
 - **Python**: Flexible scripting via PyO3 compilation to WASM, maintaining Python's expressiveness
 - **JavaScript**: Dynamic scripting with QuickJS integration, enabling runtime flexibility
 
 The beauty of this approach is that all these languages run within the same JVM process, sharing resources and memory efficiently while maintaining their individual characteristics.
 
-## WASI: The Key to Server-Side WebAssembly
-
-One of the most interesting aspects of our implementation is the use of WASI (WebAssembly System Interface) for the Go agent. Here's how it works:
-
-```java
-@ApplicationScoped
-public class GoGreetingService {
-    public String greeting(String name, String lang) {
-        WasiOptions wasiOpts = WasiOptions.builder().inheritSystem().build();
-        try (WasiPreview1 wasi = WasiPreview1.builder().withOptions(wasiOpts).build()) {
-            Instance instance = Instance.builder(module)
-                .withImportValues(
-                    ImportValues.builder()
-                        .addFunction(wasi.toHostFunctions())
-                        .build())
-                .withStart(false)
-                .build();
-            // WASI-enabled WASM execution
-            return result;
-        }
-    }
-}
-```
-
-WASI provides a standardized interface for WebAssembly modules to interact with the host system, enabling secure access to system resources while maintaining sandboxing. This is particularly powerful for server-side deployments where you need controlled access to system capabilities.
 
 ## Self-Contained AI with LangChain4j and JLama
 
@@ -215,6 +168,22 @@ The JVM approach opens up several enterprise-focused use cases:
 **Resource Optimization**: Efficient resource utilization through shared JVM processes and optimized garbage collection.
 
 **Security and Compliance**: Leverage JVM security features and enterprise-grade access controls for sensitive AI applications.
+
+## Enhancement Areas
+
+Several architectural improvements could significantly enhance this JVM-based approach. The current implementation works well, but there's room for optimization and new capabilities:
+
+**Multi-Model Agent Orchestration**: Enable agents to work together across languages, with Rust agents handling performance-critical tasks, Python agents managing data processing, and JavaScript agents providing dynamic behavior.
+
+**Performance Optimization**: Add JVM-specific optimizations like GraalVM native compilation for reduced memory footprint and faster startup times, plus advanced garbage collection tuning for WASM workloads.
+
+**Distributed Agent Coordination**: Extend the architecture to support distributed agent execution across multiple JVM instances with shared state and message passing between agents.
+
+**Enhanced Monitoring and Observability**: Integrate with enterprise monitoring tools like Micrometer, Prometheus, and distributed tracing to provide comprehensive visibility into agent performance and behavior.
+
+**Dynamic Agent Loading**: Support for hot-swapping agent implementations without service restarts, enabling A/B testing and gradual rollouts of new agent capabilities.
+
+**Integration with Enterprise Middleware**: Enhanced integration with message queues, event streams, and enterprise service buses for building complex AI workflows.
 
 ## The Future of Polyglot AI Runtimes
 
