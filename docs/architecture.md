@@ -43,6 +43,7 @@ graph TB
 
 ### 3. **WebAssembly Runtime Layer**
 - **Chicory**: Pure Java WASM runtime for Rust and Go modules
+- **Extism**: Plugin runtime used for Python WASM modules ([Extism](https://extism.org/) · [Chicory SDK](https://github.com/extism/chicory-sdk))
 
 ### 4. **AI Integration Layer**
 - **LangChain4j**: Java AI framework for LLM integration
@@ -107,7 +108,7 @@ public class PythonGreetingService {
 ```
 
 **Key Features:**
-- Extism plugin system
+- Extism plugin system ([Extism](https://extism.org/) · [Python PDK](https://github.com/extism/python-pdk))
 - PyO3-based Python compilation
 - Experimental
 
