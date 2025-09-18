@@ -129,6 +129,15 @@ This blueprint showcases a multi-language WebAssembly architecture running withi
 - **Multi-Language Support**: Agents can respond in different languages based on user preferences
 - **RESTful API**: Simple HTTP interface for agent interaction
 
+Default local model
+
+- This blueprint uses a local, in-JVM model by default via LangChain4j + JLama: `mariofusco/TinyLlama-1.1B-Chat-v1.0-JQ4` (upstream `TinyLlama-1.1B-Chat-v1.0` quantized to 4 bits).
+- You can change the model in `src/main/resources/application.properties` via:
+  ```
+  quarkus.langchain4j.jlama.chat-model.model-name=<provider/model>
+  ```
+- Other providers (e.g., cloud LLMs) can be enabled by switching the LangChain4j provider configuration.
+
 ## Project Structure
 
 ```
