@@ -152,15 +152,19 @@ wasm-java-agents-blueprint/
 
 ### Rust Agent (`/hello/rust/{lang}/{name}`)
 Compiling Rust to WebAssembly is a blissful experience.
+- **Source**: [`src/main/resources/demos/rust/src/lib.rs`](src/main/resources/demos/rust/src/lib.rs)
 
 ### Go Agent (`/hello/go/{lang}/{name}`)
 Compiled to WebAssembly thanks to [TinyGo](https://tinygo.org/).
+- **Source**: [`src/main/resources/demos/go/greet.go`](src/main/resources/demos/go/greet.go)
 
 ### Python Agent (`/hello/py/{lang}/{name}`)
 Leveraging [Extism SDK](https://github.com/extism/chicory-sdk) and the [Python PDK](https://github.com/extism/python-pdk) (which uses [PyO3](https://github.com/PyO3/pyo3))
+- **Source**: [`src/main/resources/demos/python/greet.py`](src/main/resources/demos/python/greet.py)
 
 ### JavaScript Agent (`/hello/js/{lang}/{name}`)
 JavaScript is compiled and executed on the fly thanks to [QuickJS4j](https://github.com/roastedroot/quickjs4j).
+- **Source**: [`src/main/resources/demos/js/greet.js`](src/main/resources/demos/js/greet.js)
 
 ## Building WASM Modules
 
