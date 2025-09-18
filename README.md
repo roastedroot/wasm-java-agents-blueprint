@@ -12,7 +12,8 @@
 <div align="center">
 
 ![Java](https://img.shields.io/badge/Java-21%2B-orange)
-![Quarkus](https://img.shields.io/badge/Quarkus-3.26.1-blue)
+[![Quarkus](https://img.shields.io/badge/Quarkus-3.26.1-blue)](https://github.com/quarkusio/quarkus)
+[![LangChain4j](https://img.shields.io/badge/LangChain4j-Enabled-green)](https://github.com/langchain4j/langchain4j)
 ![WebAssembly](https://img.shields.io/badge/WebAssembly-WASM-purple)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 [![](https://dcbadge.limes.pink/api/server/YuMNeuKStr?style=flat)](https://discord.gg/YuMNeuKStr) <br>
@@ -81,6 +82,25 @@ LangChain4j proves to be exceptionally effective for Java-based AI applications,
 ./mvnw package
 java -jar target/quarkus-app/quarkus-run.jar
 ```
+
+### Dockerized Setup
+
+This containerized option is convenient but currently slower than running directly on the host.
+
+1. Build the image:
+   ```bash
+   ./mvnw package -DskipTests -Dquarkus.container-image.build=true
+   ```
+
+2. Run the container:
+   ```bash
+   docker run -p8080:8080 wasm-java-agents-blueprint:1.0.0-SNAPSHOT
+   ```
+
+3. Or use the pre-built image:
+   ```bash
+   docker run -p8080:8080 docker.io/andreatp/wasm-java-agents-blueprint:1.0.0-SNAPSHOT
+   ```
 
 ## How It Works
 
