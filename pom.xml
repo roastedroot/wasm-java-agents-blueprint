@@ -92,6 +92,9 @@
         <groupId>${quarkus.platform.group-id}</groupId>
         <artifactId>quarkus-maven-plugin</artifactId>
         <version>${quarkus.platform.version}</version>
+        <configuration>
+          <jvmArgs>--add-modules=jdk.incubator.vector</jvmArgs>
+        </configuration>
         <executions>
           <execution>
             <goals>

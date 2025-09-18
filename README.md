@@ -95,18 +95,25 @@ This containerized option is convenient but currently slower than running direct
 
 1. Build the image:
    ```bash
-   ./mvnw package -DskipTests -Dquarkus.container-image.build=true
+   ./mvnw package -DskipTests -Dquarkus.container-image.build=true -Dquarkus.container-image.platforms=linux/amd64
    ```
 
 2. Run the container:
    ```bash
-   docker run -p8080:8080 wasm-java-agents-blueprint:1.0.0-SNAPSHOT
+   docker run --platform linux/amd64 -p8080:8080 wasm-java-agents-blueprint:1.0.0-SNAPSHOT
    ```
 
 3. Or use the pre-built image:
    ```bash
-   docker run -p8080:8080 docker.io/andreatp/wasm-java-agents-blueprint:1.0.0-SNAPSHOT
+   docker run --platform linux/amd64 -p8080:8080 docker.io/andreatp/wasm-java-agents-blueprint:1.0.0-SNAPSHOT
    ```
+
+Note for ARM hosts
+
+- If amd64 emulation isn't available, enable it once:
+  ```bash
+  docker run --rm --privileged tonistiigi/binfmt --install amd64
+  ```
 
 ## How It Works
 
