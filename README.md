@@ -33,6 +33,12 @@ This blueprint demonstrates how to build AI agents using WebAssembly modules wit
 
 LangChain4j proves to be exceptionally effective for Java-based AI applications, providing seamless integration with both local and cloud-based language models. The framework's modular architecture makes it easy to switch between different model providers, while its type-safe API ensures reliable communication with AI services. We've tested it with TinyLlama-1.1B-Chat-v1.0, which works well for demo purposes and can run efficiently on development machines. The integration with JLama (Java implementation of LLaMA) further enhances the local model experience, offering optimized inference and memory management specifically designed for the JVM environment. Both JLama and Chicory run entirely within the JVM boundaries, ensuring everything is self-contained in the JVM.
 
+## Demo (GIF)
+
+Want a quick preview? Here's a short screen recording of the app in action:
+
+![Demo](images/demo.gif)
+
 ## Quick Start
 
 ### Prerequisites
