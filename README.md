@@ -12,7 +12,8 @@
 <div align="center">
 
 ![Java](https://img.shields.io/badge/Java-21%2B-orange)
-![Quarkus](https://img.shields.io/badge/Quarkus-3.26.1-blue)
+[![Quarkus](https://img.shields.io/badge/Quarkus-3.26.1-blue)](https://github.com/quarkusio/quarkus)
+[![LangChain4j](https://img.shields.io/badge/LangChain4j-Enabled-green)](https://github.com/langchain4j/langchain4j)
 ![WebAssembly](https://img.shields.io/badge/WebAssembly-WASM-purple)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 [![](https://dcbadge.limes.pink/api/server/YuMNeuKStr?style=flat)](https://discord.gg/YuMNeuKStr) <br>
@@ -31,6 +32,12 @@ The JVM is one of the most widely used systems in the world, powering everything
 This blueprint demonstrates how to build AI agents using WebAssembly modules within a Java application, leveraging the JVM's robust ecosystem and enterprise-grade capabilities. You can run agents written in multiple languages (Rust, Go, Python, JavaScript) seamlessly within the JVM, combining the performance benefits of WebAssembly with the reliability and maturity of the Java platform.
 
 LangChain4j proves to be exceptionally effective for Java-based AI applications, providing seamless integration with both local and cloud-based language models. The framework's modular architecture makes it easy to switch between different model providers, while its type-safe API ensures reliable communication with AI services. We've tested it with TinyLlama-1.1B-Chat-v1.0, which works well for demo purposes and can run efficiently on development machines. The integration with JLama (Java implementation of LLaMA) further enhances the local model experience, offering optimized inference and memory management specifically designed for the JVM environment. Both JLama and Chicory run entirely within the JVM boundaries, ensuring everything is self-contained in the JVM.
+
+## Demo (GIF)
+
+Want a quick preview? Here's a short screen recording of the app in action:
+
+![Demo](images/demo.gif)
 
 ## Quick Start
 
@@ -82,6 +89,32 @@ LangChain4j proves to be exceptionally effective for Java-based AI applications,
 java -jar target/quarkus-app/quarkus-run.jar
 ```
 
+### Dockerized Setup
+
+This containerized option is convenient but currently slower than running directly on the host.
+
+1. Build the image:
+   ```bash
+   ./mvnw package -DskipTests -Dquarkus.container-image.build=true -Dquarkus.container-image.platforms=linux/amd64
+   ```
+
+2. Run the container:
+   ```bash
+   docker run --platform linux/amd64 -p8080:8080 wasm-java-agents-blueprint:1.0.0-SNAPSHOT
+   ```
+
+3. Or use the pre-built image:
+   ```bash
+   docker run --platform linux/amd64 -p8080:8080 docker.io/andreatp/wasm-java-agents-blueprint:1.0.0-SNAPSHOT
+   ```
+
+Note for ARM hosts
+
+- If amd64 emulation isn't available, enable it once:
+  ```bash
+  docker run --rm --privileged tonistiigi/binfmt --install amd64
+  ```
+
 ## How It Works
 
 This blueprint showcases a multi-language WebAssembly architecture running within the Java Virtual Machine:
@@ -102,6 +135,15 @@ This blueprint showcases a multi-language WebAssembly architecture running withi
 - **Context-Aware Processing**: Agents receive contextual information about greetings and user prompts
 - **Multi-Language Support**: Agents can respond in different languages based on user preferences
 - **RESTful API**: Simple HTTP interface for agent interaction
+
+Default local model
+
+- This blueprint uses a local, in-JVM model by default via LangChain4j + JLama: `mariofusco/TinyLlama-1.1B-Chat-v1.0-JQ4` (upstream `TinyLlama-1.1B-Chat-v1.0` quantized to 4 bits).
+- You can change the model in `src/main/resources/application.properties` via:
+  ```
+  quarkus.langchain4j.jlama.chat-model.model-name=<provider/model>
+  ```
+- Other providers (e.g., cloud LLMs) can be enabled by switching the LangChain4j provider configuration.
 
 ## Project Structure
 
@@ -126,15 +168,19 @@ wasm-java-agents-blueprint/
 
 ### Rust Agent (`/hello/rust/{lang}/{name}`)
 Compiling Rust to WebAssembly is a blissful experience.
+- **Source**: [`src/main/resources/demos/rust/src/lib.rs`](src/main/resources/demos/rust/src/lib.rs)
 
 ### Go Agent (`/hello/go/{lang}/{name}`)
 Compiled to WebAssembly thanks to [TinyGo](https://tinygo.org/).
+- **Source**: [`src/main/resources/demos/go/greet.go`](src/main/resources/demos/go/greet.go)
 
 ### Python Agent (`/hello/py/{lang}/{name}`)
 Leveraging [Extism SDK](https://github.com/extism/chicory-sdk) and the [Python PDK](https://github.com/extism/python-pdk) (which uses [PyO3](https://github.com/PyO3/pyo3))
+- **Source**: [`src/main/resources/demos/python/greet.py`](src/main/resources/demos/python/greet.py)
 
 ### JavaScript Agent (`/hello/js/{lang}/{name}`)
 JavaScript is compiled and executed on the fly thanks to [QuickJS4j](https://github.com/roastedroot/quickjs4j).
+- **Source**: [`src/main/resources/demos/js/greet.js`](src/main/resources/demos/js/greet.js)
 
 ## Building WASM Modules
 

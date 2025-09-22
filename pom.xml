@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.acme</groupId>
-  <artifactId>getting-started</artifactId>
+  <artifactId>wasm-java-agents-blueprint</artifactId>
   <version>1.0.0-SNAPSHOT</version>
 
   <properties>
@@ -53,6 +53,10 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-rest</artifactId>
     </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-container-image-jib</artifactId>
+    </dependency>
 
     <dependency>
       <groupId>io.roastedroot</groupId>
@@ -88,6 +92,9 @@
         <groupId>${quarkus.platform.group-id}</groupId>
         <artifactId>quarkus-maven-plugin</artifactId>
         <version>${quarkus.platform.version}</version>
+        <configuration>
+          <jvmArgs>--add-modules=jdk.incubator.vector</jvmArgs>
+        </configuration>
         <executions>
           <execution>
             <goals>
